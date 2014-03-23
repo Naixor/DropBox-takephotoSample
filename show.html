@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Dropbox login sample</title>
+		<style type="text/css">
+			video {
+				  background: rgba(255,255,255,0.5);
+				  border: 1px solid #ccc;
+			}
+			button {
+				margin: 0px 10px;
+				background-color: #f0f0f0;
+				border: 1px solid #ccc;
+				font-size: 18px;
+				line-height: 24px;
+				padding: 8px 14px;
+				color: #666;
+				border-radius: 8px;
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				-ms-border-radius: 8px;
+				cursor: pointer;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>
+		<script src="login.js"></script>
+		<script type="text/javascript" src="takephoto.js"></script>
+		<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="wregyh036kjp9kc"></script>
+		<script type="text/javascript">
+			$(document).ready(function($) {
+				$("#camera").hide();
+				$("#btn_upload").hide();
+
+				$('body').Dropbox({
+					DROPBOX_APP_KEY: "wregyh036kjp9kc",
+					DROPBOX_SECRET: "7cyu4r4akvmdiqz",
+					STARTEVENT: "btn_start"
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button id="btn_start">START</button>
+		<div id="camera">
+			<a>Click the camera to take photo and then upload button will show.If you take 3 photoes then click upload, the photos will all be uploaded!</a>
+			<video id="local_media" autoplay></video>
+			<canvas id="photo_canvas" style="display:none"></canvas>
+			<button id="btn_upload">Upload</button>
+		</div>
+	</body>
+</html>
