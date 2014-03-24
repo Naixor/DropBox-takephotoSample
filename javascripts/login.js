@@ -20,7 +20,7 @@
 				"m+": this.getMinutes(),  
 		        "s+": this.getSeconds(), 
 		        "q+": Math.floor((this.getMonth() + 3) / 3), 
-		        "S": this.getMilliseconds() 
+		        "S": this.getMilliseconds()
 		    };
 		    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
 		    for (var k in o)
@@ -45,9 +45,10 @@
 				client.authenticate();
 			});
 
-			client.authenticate({interactive:false}, function (error) {
+			client.authenticate({interactive:true}, function (error) {
 				if (error) {
 					alert('Authentication error: ' + error);
+					client.reset();
 				}
 			});	
 
@@ -60,7 +61,7 @@
 						CAMERA_W: "400px"
 					}, function () {
 						var image = new Image();
-						image.src = document.querySelector("canvas").toDataURL("image/jpeg");
+						image.src = document.querySelector("canvas").toDataURL("image/jpg");
 						/*var cursor = {
 							"tag":setting.DROPBOX_APP_KEY,
 							"offset":Math.ceil(image.fileSize/1024)
@@ -80,7 +81,7 @@
 						});
 						
 
-						client.writeFile("/photos/"+new Date().Format("yyyy-MM-dd-HH:mm:ss")+'.jpeg', (image.src), {"noOverwrite":true}, function (error, stat) {
+						client.writeFile("/photos/"+new Date().Format("yyyy_MM_dd-HH_mm_ss")+'.jpg', (image.src), {"noOverwrite":true}, function (error, stat) {
 							if (error){
 								alert("upload error, please retry");
 								return;
